@@ -23,8 +23,6 @@ const listStaff = (req, res) => {
 //Create staff
 
 const createStaff = (req, res ) => { 
-    console.log(req.body)
-return res.send('Testing')
     bcrypt.hash(req.body.password, 10, function(err, hashedPass) {
 
 
@@ -40,8 +38,8 @@ return res.send('Testing')
             name: req.body.name,
             email: req.body.email,
             password: hashedPass,
-            isManager: req.body.isManager,
-            isStaff: req.body.isStaff
+            isManager: req.body.isManager ==='on' ? true : false,
+            isStaff: req.body.isStaff ==='on' ? true : false
         });
         sta.save((err, data) => {
             if(!err) {
