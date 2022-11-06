@@ -19,3 +19,9 @@ exports.login = function(req, res) {
     'title': 'Sign in'
     });
     }
+
+exports.goals = function(req, res) {
+    res.render("goals", {
+    'title': 'Manage goals'
+    });
+    }

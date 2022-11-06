@@ -24,10 +24,6 @@ const listStaff = (req, res) => {
 
 const createStaff = (req, res ) => { 
     bcrypt.hash(req.body.password, 10, function(err, hashedPass) {
-
-
-
-
         
         if (err) {
             return res.json({
@@ -66,9 +62,10 @@ const login = (req, res, next) => {
                     })
                 }
                 if (result){
-                    res.json({
-                        message: 'Login successful!'
-                    })
+                    // res.json({
+                    //     message: 'Login successful!'
+                    // })
+                    res.redirect('/goals')
                 }else {
                     res.json({
                         message: 'Password is incorrect!'
@@ -83,13 +80,6 @@ const login = (req, res, next) => {
     })
 }
 
-// const login = (req, res, next) => {
-//     sta.findOne({ email: req.body.email}, (err, data) {
-//         if (data) {
-
-//         }
-//     })
-// }
 
 
 
@@ -98,9 +88,9 @@ const updateStaff = (req, res) => {
     const sta = {
         name: req.body.name,
         email: req.body.email,
-        password: hashedPass,
-        isManager: req.body.isManager,
-        isStaff: req.body.isStaff,
+        // password: hashedPass,
+        // isManager: req.body.isManager,
+        // isStaff: req.body.isStaff,
     };
     Staff.findByIdAndUpdate(req.params.id, { $set: sta }, { new: true }, (err, data) => {
         if(!err) {
