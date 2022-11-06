@@ -26,7 +26,7 @@ const createGoal = (req, res ) => {
     });
     goa.save((err, data) => {
          if(!err) {
-             res.send(data);
+            //  res.send(data);
             res.status(200).json({code: 200, message: 'Goal Added Successfully', addGoal: data})
          } else {
            console.log(err);
@@ -37,7 +37,7 @@ const createGoal = (req, res ) => {
 
 
 
-//update staff
+//update goal
 const updateGoal = (req, res) => { 
     const goa = {
         goal: req.body.goal,

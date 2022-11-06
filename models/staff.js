@@ -3,15 +3,15 @@ const mongoose = require ("mongoose");
 const Staff = mongoose.model('Staff', {
     name: {
         type:String,
-        // required:true
+        required:true
     }, 
     email: {
         type:String,
-        // required:true
+        required:true
     },
     password: {
         type:String,
-        // required:true
+        required:true
     },
     isManager: {
         type:Boolean,
