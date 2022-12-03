@@ -1,15 +1,23 @@
 const mongoose = require ("mongoose");
 
-const Goal = mongoose.model('Goal', {
+const GoalSchema = new mongoose.Schema({
+    staff: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Staff'
+    },
     goal: {
         type:String,
-        required:true
+        // required:true
     }, 
-    completed: {
-        type:Boolean,
-        required:true
+    category: {
+        type:String,
+        // required:true
+    },
+    started: {
+        type:Date,
+        // required:true
     }
 });
 
 
-module.exports = {Goal}
+module.exports = mongoose.model('Goal', GoalSchema);

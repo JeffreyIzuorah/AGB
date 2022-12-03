@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" 
+rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+ crossorigin="anonymous">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../create.css">
+    <title>dashboard</title>
+</head>
+<body onload="loading()">
+    <div id="loader"></div>
+    <br>
+    <h1 id="fetch"></h1>
+    <div style="display:none;" id="content" class="animate-bottom">
+      
+        
+        <div class="icon-scroll" id="small-menu" >
+        <div class="icon-bar" id="myIcons">
+
+
+           <a class="active" href="#">    <i class="bi bi-house-door" style="color: #fff;"></i></a> 
+          <a href="goals/create"> <i class="bi bi-plus" style="color: #fff;"></i><span>Add</span></a>  
+            <a href="/completed"><i class="bi bi-check2-all"style="color: #fff;"></i><span>Add</span></a>
+            <a href="/logout"><i class="bi bi-box-arrow-left" style="color: #fff;"></i><span>Add</span></a>
+        </div>
+        </div>
+
+        <div class="main" id="myMain">
+        <div class="pic"> 
+       
+        </div>
+        <div class="details">
+            <h1>Create a workout Goal</h1>
+            <form method="post" role="form">
+                <div class="form-group">
+                    <input type="text" id="goal" name="goal" placeholder="Goal" required>
+                </div>
+               
+                <div class="form-group">
+                    <input type="text" id="category" name="category" placeholder="category" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="date" id="started" name="started" placeholder="date" required>
+                </div>
+
+                 <div>
+              <input type="checkbox" name="repeat" id="agree" value="yes"/>
+             <label for="agree">Repeat goal</label>
+              </div>
+                <div class="form-group">
+                    <input type="submit" value="create">
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+        
+        
+        </div>
+        </div>
+    </div>
+
+    
+    <script>
+    
+        var myVar;
+
+        function loading() {
+            myVar = setTimeout(showPage, 1500);
+        }
+
+        function showPage() {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("fetch").style.display = "none";
+            document.getElementById("content").style.display = "block";
+        }
+    </script>
+
+
+
+
+    
+</body>
+</html>

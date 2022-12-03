@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-
-const { Goal } = require('../models/goals');
+const staff = require("../models/staff");
+const Goal = require('../models/goals');
+const { getStaff } = require('./staffController');
 
 
 // list all goals
@@ -17,60 +18,74 @@ const listGoals = (req, res) => {
 }
 
 
-//Create Goal
+// //Create Goal
 
-const createGoal = (req, res ) => { 
-    const goa = new Goal({
-        goal: req.body.goal,
-        completed: req.body.completed
-    });
-    goa.save((err, data) => {
-         if(!err) {
-            //  res.send(data);
-            res.status(200).json({code: 200, message: 'Goal Added Successfully', addGoal: data})
-         } else {
-           console.log(err);
-        }
-    });
+// const addGoal = (req, res) => {
+    
+//     res.render('create', {
+//         'heading' : 'Add',
+       
+//     });
+// }
 
-}
+// const createGoal = async (req, res ) => { 
+//     const goa = new Goal({
+//         goal: req.body.goal,
+//         category: req.body.category,
+//         started: req.body.started,
 
-
-
-//update goal
-const updateGoal = (req, res) => { 
-    const goa = {
-        goal: req.body.goal,
-        completed: req.body.completed,
-    };
-    Goal.findByIdAndUpdate(req.params.id, { $set: goa }, { new: true }, (err, data) => {
-        if(!err) {
-            res.status(200).json({code: 200, message: 'Goal Updated Successfully', updateGoal: data})
-        } else {
-            console.log(err);
-        }
-    });
-}
+//     });
+//     goa.save((err, data) => {
+//          if(!err) {
+//             // res.send(data);
+//             res.status(200).json({code: 200, message: 'Goal Added Successfully', addGoal: data})
+//          } else {
+//            console.log(err);
+//         }
+//     });
 
 
 
-//delete Goal
+// }
 
-const deleteGoal = (req, res) => {
-    Goal.findByIdAndRemove(req.params.id, (err, data) => {
-        if(!err) {
-            // res.send(data);
-            res.status(200).json({code: 200, message: 'Goal deleted successfully', deleteGoal: data})
-        } else {
-            console.log(err);
-        }
-    });
 
-}
 
-module.exports ={ 
-listGoals
-,createGoal
-,updateGoal
-,deleteGoal
-}
+// //update goal
+// const updateGoal = (req, res) => { 
+//     const goa = {
+//         goal: req.body.goal,
+//         category: req.body.category,
+//         started: req.body.started,
+//     };
+//     Goal.findByIdAndUpdate(req.params.id, { $set: goa }, { new: true }, (err, data) => {
+//         if(!err) {
+//             res.status(200).json({code: 200, message: 'Goal Updated Successfully', updateGoal: data})
+//         } else {
+//             console.log(err);
+//         }
+//     });
+// }
+
+
+
+// //delete Goal
+
+// const deleteGoal = (req, res) => {
+//     Goal.findByIdAndRemove(req.params.id, (err, data) => {
+//         if(!err) {
+//             // res.send(data);
+//             res.status(200).json({code: 200, message: 'Goal deleted successfully', deleteGoal: data})
+//         } else {
+//             console.log(err);
+//         }
+//     });
+
+// }
+
+// module.exports ={ 
+// listGoals
+// ,addGoal
+// ,createGoal
+// ,updateGoal
+// ,deleteGoal
+// }

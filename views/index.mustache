@@ -8,29 +8,43 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" 
 rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
  crossorigin="anonymous">
- <link rel="stylesheet" type="text/css" href="">
+ <link rel="stylesheet" type="text/css"  media="screen"  href="../index.css">
     <title>AGB Wellness</title>
 </head>
 <body>
 
+    <header>
+        <div id="brand">  
+         <a href="/">
+         <img src="../agblogo.jpg" width=76px, height=44px ></a>
+         </div>
+        <nav>
+          <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">About Us</a></li>
+          </ul>
+        </nav>
+      </header>
+
     <div class="welcome">
         <h1>{{title}}</h1>
-        <p>Welcome to the AGB limited corporation wellness program.</p>
+        <p class="messagein">Welcome to the AGB limited corporation wellness program.</p>
     </div>
     
-  
-    <a id="login" href="/login">Login</a>
-    <a href="/register">Sign Up</a>
-    
+  <div class="linksContainer">
+  <div class="links">
+    <a class="btn btn-dark btn-lg" role="button" href="/staff/login" >Login</a>
+    <a class="btn btn-light btn-lg" role="button" href="/staff/register">Sign Up</a>
+    </div>
+    </div>
 
 
 
-
-
-
+ 
 
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script> 
+  
 </body>
 </html>
