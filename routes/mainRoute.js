@@ -1,22 +1,30 @@
 const express = require('express');
 const router = express.Router();
 const controller = require("../controllers/mainController");
+const {checkAuthenticated} = require("../config/auth.js")
+const {checkNotAuthenticated} = require("../config/auth.js")
 
 
-router.get("/", controller.homePage);
+
+
+
+router.get("/",  controller.homePage);
 
 router.get("/logout", controller.logout);
 // router.get("/goals", controller.goals);
-router.get("/create", controller.addGoal);
-router.post("/create", controller.createGoal);
-router.patch("/update/:id",controller.updateGoal)
-router.delete("/delete/:id",controller.deleteGoal)
+router.get("/create", checkAuthenticated, controller.addGoal);
+router.post("/create", checkAuthenticated, controller.createGoal);
+router.get('/edit/:id', checkAuthenticated, controller.editGoal)
+router.post('/edit/:id', checkAuthenticated, controller.updateGoal)
+router.get('/completed/:id', checkAuthenticated, controller.mark_complete);
+// router.patch("/update/:id",controller.updateGoal)
+router.get("/delete/:id", checkAuthenticated, controller.deleteGoal)
 
 router.patch("/staff/update/:id",controller.updateStaff)
 
 
 
-router.get("/dashboard", controller.dashboard);
+router.get("/dashboard", checkAuthenticated, controller.dashboard,);
 
 
 

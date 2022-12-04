@@ -1,20 +1,31 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
-const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-const passport = require("passport")
-const flash = require('express-flash')
-const session = require('express-session')
+const express = require('express');
+const router = express.Router();
+const passport = require('passport');
+const path = require('path');
+const flash = require('connect-flash');
+const session = require('express-session');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser')
+const mustache = require('mustache-express');
 
 require('./config/passport')(passport)
 
-const mustache = require('mustache-express');
+const dotenv = require("dotenv");
+
+
+const connectDB = require('./config/db');
+// const { post_login, post_login_middleware } = require("./controllers/mainController");
+// Load Config
+dotenv.config({path: './config/config.env'})
+
+connectDB();
+
+const app = express();
+
 app.engine('mustache', mustache());
 app.set('view engine', 'mustache');
-
-app.use(flash())
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(session({
   secret: 'secret',
   resave: true,
@@ -23,23 +34,25 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash())
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  res.locals.message = req.flash('message');
+  next();
+})
 
 
-const dotenv = require("dotenv");
-
-
-const connectDB = require('./config/db');
-// Load Config
-dotenv.config({path: './config/config.env'})
-
-connectDB();
 
 
 
-//Routes
-app.use('/', require('./routes/mainRoute'));
-app.use('/staff', require('./routes/staff'));
+
+
 // app.use('/goals', require('./routes/goals'));
+
+// app.get('/dashboard', post_login_middleware)
+
 
 
 app.use(express.static(__dirname + '/public'));
@@ -49,3 +62,7 @@ app.use(express.static(__dirname + '/public'));
 app.listen(8000, () => {
     console.log("Server started on port 8000");
   });
+
+//Routes
+app.use('/', require('./routes/mainRoute'));
+app.use('/staff', require('./routes/staff'));

@@ -13,10 +13,16 @@
 </head>
 <body>
 
-<header>
+<section class="vh-100">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 text-black">
+
+        <div class="px-5 ms-xl-4">
+          <header>
         <div id="brand">  
-         <a href="/"></a>
-         <img src="../agblogo.jpg" width=76px, height=44px >
+         <a href="/">
+         <img src="../agblogo.jpg" width=76px, height=44px ></a>
          </div>
         <nav>
           <ul>
@@ -25,25 +31,56 @@
           </ul>
         </nav>
       </header>
+        </div>
 
-    <div class="col-md-6 main">
-        <form action="/staff/register" method="POST" enctype =“multipart/form-data”>
-            <h2>{{title}}</h2>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Name" required />
-            <br>
-            <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Email" required />
-            <br>
-            <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password" required />
-            <br>
-            <input type="checkbox"  class="form-check-label" id="exampleCheck1" name="isManager" />
-            <label for="isManager"> Are you a manager?</label>
-            <br>
-            <input type="checkbox"  class="form-check-label" id="exampleCheck1" name="isStaff"  />
-            <label for="isStaff"> Are you a Staff?</label>
-            <br>
-            <input type="submit" value="Submit" id="submit" class="btn btn-primary" />
-        </form>
+        <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+
+          <form style="width: 23rem;" action="/staff/register" method="POST">
+
+            <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">{{title}}</h3>
+
+            <div class="form-outline mb-4">
+              <input type="name" id="form2Example18" name="name" class="form-control form-control-lg" required>
+              <label class="form-label" for="form2Example18">Full name</label>
+            </div>
+            
+            
+            <div class="form-outline mb-4">
+              <input type="email" id="form2Example18" name="email" class="form-control form-control-lg" required>
+              <label class="form-label" for="form2Example18">Email address</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="password" id="form2Example28" name="password" class="form-control form-control-lg" required>
+              <label class="form-label" for="form2Example28">Password</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="checkbox"  class="form-check-label" id="exampleCheck1" name="isManager" />
+              <label for="isManager" style="color: #fff;"> Are you a manager?</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="checkbox"  class="form-check-label" id="exampleCheck1" name="isStaff"  />
+              <label for="isStaff" style="color: #fff;"> Are you a Staff?</label>
+            </div>
+
+            <input type="submit" value="login" id="login" class="w-100 btn btn-lg btn-primary"/>
+
+            <p class="no-account">Already have an account? <a href="/staff/login" class="link-info">Login here</a></p>
+
+          </form>
+
+        </div>
+
+      </div>
+      <div class="col-sm-6 px-0 d-none d-sm-block">
+        <img src="../register.jpg"
+          alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: left;">
+      </div>
     </div>
+  </div>
+</section>
 
 
 

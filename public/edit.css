@@ -47,6 +47,7 @@ body {
 }
 
 
+
 .icon-bar {
     width: 80px;
     background-color:rgb(29, 29, 29);
@@ -95,7 +96,7 @@ body {
 
 .pic {
     width: 400px;
-    background-image: url('../public/register.jpg');
+    background-image: url('./login.jpg') ;
     height: 750px;
     position: absolute;
     z-index: 600;
@@ -145,7 +146,7 @@ input[type=text]:hover {
 
   
 input[type=submit] {
-    width: 40%;
+    width: 30%;
     background-color: black;
     color: white;
     padding: 11px 16px;

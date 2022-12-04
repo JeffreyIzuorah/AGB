@@ -2,8 +2,7 @@ const mongoose = require ("mongoose");
 
 const GoalSchema = new mongoose.Schema({
     staff: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Staff'
+        type: String,
     },
     goal: {
         type:String,

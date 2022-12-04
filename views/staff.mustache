@@ -7,12 +7,27 @@
     <title>Manage Staff</title>
 </head>
 <body>
+
+<div>
+
+    <div class="icon-scroll" id="small-menu" >
+        <div class="icon-bar" id="myIcons">
+
+
+            <a class="home" href="#">  <i class="bi bi-house-door" style="color: #fff;"></i></a> 
+            <a href="/create"> <i class="bi bi-plus" style="color: #fff;"></i><span>Add</span></a>  
+            <a href="/completed"><i class="bi bi-check2-all"style="color: #fff;"></i><span>Add</span></a>
+            <a href="/logout"><i class="bi bi-box-arrow-left" style="color: #fff;"></i><span>Add</span></a>
+        </div>
+    </div>
     <h1>{{title}}</h1>
     <div class="staffContainer"></div>
 
     <button type="button">List Staff</button>
     <button onclick="location.href='/register';" type="button">Add Staff</button>
     <button type="button">Remove Staff</button>
+
+</div>
     
 </body>
 </html>

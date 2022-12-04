@@ -11,7 +11,6 @@ html {
 body {
     margin: 0;
     font-family: 'metropolis';
-    overflow: hidden;
 }
 #myIcons span {
     font-family: 'metropolis';
@@ -29,7 +28,7 @@ body {
     position: absolute;
     white-space: nowrap;
     width: 0;}
-#loader {
+/* #loader {
     position: absolute;
     left: 50%;
     top: 40%;
@@ -44,7 +43,7 @@ body {
     height: 120px;
     -webkit-animation: spin 1s linear infinite;
     animation: spin 2s linear infinite;
-  }
+  } */
 
 #fetch {
       text-align: center;
@@ -53,7 +52,7 @@ body {
       font-weight: 500;
 }
   
-@-webkit-keyframes spin {
+/* @-webkit-keyframes spin {
     0% { -webkit-transform: rotate(0deg); }
     100% { -webkit-transform: rotate(360deg); }
 }
@@ -61,10 +60,10 @@ body {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-}
+} */
   
   /* Add animation to "page content" */
-.animate-bottom {
+/* .animate-bottom {
     position: relative;
     -webkit-animation-name: animatebottom;
     -webkit-animation-duration: 1s;
@@ -81,7 +80,7 @@ body {
 @keyframes animatebottom { 
     from{ bottom:-100px; opacity:0 } 
     to{ bottom:0; opacity:1 }
-}
+} */
   
 #content {
     display: none;
@@ -103,7 +102,7 @@ body {
     transition-timing-function: ease;
 }
 
-@-webkit-keyframes animateleft {
+/* @-webkit-keyframes animateleft {
     from { left:-70px; opacity:0 } 
     to { left:0px; opacity:1 }
 }
@@ -111,7 +110,7 @@ body {
 @keyframes animateleft { 
     from{ left:-70px; opacity:0 } 
     to{ left:0; opacity:1 }
-}
+} */
 
 .icon-bar {
     width: 80px;
@@ -133,8 +132,16 @@ body {
     text-align: center;
     padding: 16px;
     transition: all 0.3s ease;
+    text-size-adjust: 14px;
 
     font-size: 25px;
+}
+
+.popping h3{
+    position: relative;
+    left: 40%;
+    bottom: 300px;
+    font-size: 16px;
 }
 
 
@@ -198,15 +205,15 @@ body {
 }
 
 .delete {
-    border: 2px solid #C33434;
-    background-color:#C33434;
+    border: 2px solid red;
+    background-color:red;
     width: 40px;
     height: 40px;
     float: left;
     border-radius: 50%;
     left: 15px;
     bottom: 35px;
-    margin: 20px;
+    margin: 30px;
 }
 
 .bi-trash3 {
@@ -224,7 +231,7 @@ body {
     border-radius: 50%;
     left: 100px;
     bottom: 33px;
-    margin: 20px;
+    margin: 30px;
 }
 
 .bi-pencil{
@@ -243,7 +250,7 @@ body {
     border-radius: 50%;
     right: 15px;
     bottom: 72px;
-    margin: 20px;
+    margin: 30px;
 }
 
 .bi-check2-all {

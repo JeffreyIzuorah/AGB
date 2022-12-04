@@ -1,3 +1,5 @@
 config.env
 node_modules
 temp
+goals.js
+goalscontroller.js
