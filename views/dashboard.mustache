@@ -13,21 +13,21 @@ rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxj
 <body>
 
     <div> 
-        <div class="icon-scroll" id="small-menu" >
-        <div class="icon-bar" id="myIcons">
-            <a class="home" href="/dashboard">  <i class="bi bi-house-door" style="color: #fff;"></i></a> 
-            <a href="/create"> <i class="bi bi-plus" style="color: #fff;"></i></a>  
-            <a href="/manageStaff"><i class="bi bi-people"style="color: #fff;"></i></a>
-            <a href="/logout"><i class="bi bi-box-arrow-left" style="color: #fff;"></i></a>
+        <div class="iconScroll" id="menu" >
+            <div class="navBar" id="myIcons">
+                <a class="home" href="/dashboard">  <i class="bi bi-house-door" style="color: #fff;"></i></a> 
+                <a href="/create"> <i class="bi bi-plus" style="color: #fff;"></i></a>  
+                <a href="/manageStaff"><i class="bi bi-people"style="color: #fff;"></i></a>
+                <a href="/logout"><i class="bi bi-box-arrow-left" style="color: #fff;"></i></a>
+            </div>
         </div>
-        </div>
-        <div class="main" id="myMain">
+        <div class="main" id="main">
         <h1 class="welcome">Welcome  {{staff}}</h1>
         <p>These page shows your weekly goals</p>
             {{#alert}}
                 <p class="alert">{{message}}</p>
             {{/alert}}
-        <div class="card-container">
+        <div class="cardContainer">
         {{#goals}}
             <div id='card' class="card">
             <h2><strong>Goal:</strong> {{goal}}</h2>
@@ -56,7 +56,6 @@ rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxj
                 </a>
             </div>
 
-
              <div class="complete">
                 <a href="/completeGoal/{{_id}}">
                     <i class="bi bi-check-square"></i></i>
@@ -68,8 +67,7 @@ rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxj
                     <i class="bi bi-trash3"></i>
                 </a>
             </div>
-
-           
+ 
             </div>
 
             </div>
@@ -78,9 +76,9 @@ rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxj
         {{^goals}}
 
 
-        <div class="popping">
+        <div class="prompt">
                 <i class="fas fa-tasks fa-8x"></i> 
-                <h3 class="getting">Get started by adding some goals</h3>
+                <h3 class="prompt">Your goals will show here</h3>
                  </div>
             {{/goals}}
         

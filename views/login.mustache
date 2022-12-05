@@ -42,15 +42,15 @@
           <form style="width: 23rem;" action="/staff/login" method="POST">
 
             <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px; color: #fff;">{{title}}</h3>
-            {{#alert1}}
+            {{#alertSuccess}}
                 <p class="alert" style="color: red;">{{success_msg}}</p>
-            {{/alert1}}
-            {{#alert2}}
+            {{/alertSuccess}}
+            {{#alertErrorMsg}}
                 <p class="alert" style="color: red;" id="inc">{{error_msg}}</p>
-            {{/alert2}}
-            {{#alert3}}
+            {{/alertErrorMsg}}
+            {{#alertError}}
                 <p class="alert" style="color: red;" id="inc">{{error}}</p>
-            {{/alert3}}
+            {{/alertError}}
 
             <div class="form-outline mb-4">
               <input type="email" id="form2Example18" name="email" class="form-control form-control-lg" required>

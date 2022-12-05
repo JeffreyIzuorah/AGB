@@ -13,7 +13,7 @@ body {
     font-family: 'metropolis';
 }
   
-.icon-scroll {
+.iconScroll {
     position: relative;
 }
 
@@ -22,7 +22,7 @@ strong {
 }
 
 
-.icon-bar {
+.navBar {
     width: 80px;
     background-color:#2b2b29;
     height: 80%;
@@ -33,7 +33,7 @@ strong {
 
 }
 
-.icon-bar a {
+.navBar a {
     display: block;
     text-align: center;
     padding: 16px;
@@ -43,7 +43,7 @@ strong {
 }
 
 
-.popping h3{
+.prompt h3{
     position: relative;
     left: 40%;
     bottom: 300px;
@@ -51,11 +51,11 @@ strong {
 }
 
 
-.icon-bar a:hover {
+.navBar a:hover {
     background-color: black;
 }
 
-.card-container {
+.cardContainer {
     display: grid;
     width: 95%;
     grid-template-columns: 25% 25% 25%  ;

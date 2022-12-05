@@ -14,12 +14,12 @@ body {
 }
 
 
-.icon-scroll {
+.iconScroll {
     position: relative;
 }
 
 
-.icon-bar {
+.navBar {
     width: 80px;
     background-color:rgb(29, 29, 29);
     height: 80%;
@@ -30,7 +30,7 @@ body {
 
 }
 
-.icon-bar a {
+.navBar a {
     display: block;
     text-align: center;
     padding: 16px;
@@ -40,7 +40,7 @@ body {
     font-size: 25px;
 }
 
-.card-container {
+.cardContainer {
     display: grid;
     width: 95%;
     grid-template-columns: 20% 20% 20% 20%  ;

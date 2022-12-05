@@ -40,16 +40,12 @@ exports.createStaff = function(req, res ) {
         });
         sta.save((err, data) => {
             if(!err) {
-                // res.send(data);
                 res.redirect('/staff/login')
             } else {
                 res.redirect('/staff/register')
-            //    console.log(err);
             }
         });
     })
-
-
 }
 
 exports.staffPage = async(req, res) =>{
@@ -61,10 +57,10 @@ exports.staffPage = async(req, res) =>{
             'staff' : allStaff
         });  
     } else {
-        res.render("dashboard");
+        res.status(403);
+        res.render("403");
 
-    }
-    
+    }  
 }
 
 exports.addStaffPage = async(req, res) =>{
@@ -97,7 +93,6 @@ exports.deleteStaff = async (req, res) => {
         res.redirect('/manageStaff');
     } catch(err) {
         console.log(err);
-        res.render('500');
     }
 
 }
@@ -117,9 +112,9 @@ exports.listStaff = function (req, res) {
 exports.login = function(req, res) {
     res.render("login", {
     'title': 'Sign in',
-    'alert1' : res.locals.success_msg,
-    'alert2' : res.locals.error_msg,
-    'alert3' : res.locals.error
+    'alertSuccess' : res.locals.success_msg,
+    'alertErrorMsg' : res.locals.error_msg,
+    'alertError' : res.locals.error
     });
     }
 
@@ -141,7 +136,6 @@ exports.logout = function(req, res, next) {
             return next(err);
         }
     });
-    req.flash('success_msg','You are now logged out');
     res.redirect('/staff/login');
 }
 
@@ -153,22 +147,17 @@ exports.dashboard = async(req, res) =>{
     staff: staff,
     'goals': goal,
     'alert' : res.locals.message,
-
-    
     });
      
 }
 
-exports.addGoal = function(req, res) {
-    
+exports.addGoal = function(req, res) {   
     res.render('create', {
         'title' : 'Create a Goal',
         staff: req.user.name,
         goal: req.body.goal,
         category: req.body.category,
-        started: req.body.started
-
-       
+        started: req.body.started  
     });
 }
 
@@ -193,7 +182,6 @@ exports.createGoal = async (req, res ) => {
         res.redirect('/dashboard');
     } catch(err) {
         console.log(err);
-        res.render('500');
     }
 }
 
@@ -209,7 +197,6 @@ exports.editGoal = async (req, res) => {
         })
     } catch(err) {
         console.log(err);
-        res.render('500');
     }
 }
 
@@ -225,7 +212,6 @@ exports.completeGoal = async(req, res) => {
         res.redirect('/dashboard');
     } catch(err) {
         console.log(err);
-        res.render('500');
     }
 
 }
@@ -243,7 +229,6 @@ exports.updateGoal = async(req, res) => {
         res.redirect('/dashboard');
     } catch(err) {
         console.log(err);
-        res.render('500');
     }
 }
 
@@ -255,7 +240,6 @@ exports.deleteGoal = async (req, res) => {
         res.redirect('/dashboard');
     } catch(err) {
         console.log(err);
-        res.render('500');
     }
 
 }
