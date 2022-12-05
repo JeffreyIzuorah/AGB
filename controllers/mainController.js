@@ -11,6 +11,11 @@ exports.homePage = function(req, res) {
     });
     }
 
+exports.about = function(req, res) {
+    res.render("about", {
+    });
+    }
+
 exports.register = function(req, res) {
     res.render("register", {
     'title': 'Register'
@@ -47,24 +52,66 @@ exports.createStaff = function(req, res ) {
 
 }
 
+exports.staffPage = async(req, res) =>{
+    
+    const allStaff = await Staff.find().lean();
+    if (req.user.isManager ) {
+        res.render("staff", {
+            'title' : 'Manage Staff',
+            'staff' : allStaff
+        });  
+    } else {
+        res.render("dashboard");
 
-exports.updateStaff = (req, res) => { 
-    const sta = {
+    }
+    
+}
+
+exports.addStaffPage = async(req, res) =>{
+    res.render("addStaff", {
+        'title' : 'Manage Staff',
+    });
+}
+
+exports.addStaff = async(req, res) =>{
+    const staff = new Staff({
         name: req.body.name,
         email: req.body.email,
-        // password: hashedPass,
-        // isManager: req.body.isManager,
-        // isStaff: req.body.isStaff,
-    };
-    Staff.findByIdAndUpdate(req.params.id, { $set: sta }, { new: true }, (err, data) => {
+    });
+    staff.save((err, data) => {
         if(!err) {
-            res.status(200).json({code: 200, message: 'Staff Updated Successfully', updateStaff: data})
+            // res.send(data);
+            res.redirect('/manageStaff')
         } else {
-            console.log(err);
+            res.redirect('/addStaff')
+           console.log(err);
         }
     });
 }
-    
+
+
+exports.deleteStaff = async (req, res) => {
+    try {
+        await Staff.deleteOne({ _id: req.params.id });
+        req.flash('message', 'Staff has been successfully removed!'); 
+        res.redirect('/manageStaff');
+    } catch(err) {
+        console.log(err);
+        res.render('500');
+    }
+
+}
+
+
+exports.listStaff = function (req, res) {
+    Staff.find({}, (err, data) => {
+    if(!err) {
+        res.send(data);
+    } else {
+        console.log(err);
+    }
+});
+}
 
 
 exports.login = function(req, res) {
@@ -87,18 +134,6 @@ exports.post_login = (req, res, next) => {
 
 }
 
-exports.post_login_middleware = (req, res, next) => {
-
-    passport.authenticate('local',{
-        failureRedirect : '/login',
-        failureFlash : true,
-    })(req,res,next);
-
-}
-
-
-
-
 
 exports.logout = function(req, res, next) {
     req.logout((err) =>{
@@ -106,7 +141,7 @@ exports.logout = function(req, res, next) {
             return next(err);
         }
     });
-    req.flash('success_msg','Now logged out');
+    req.flash('success_msg','You are now logged out');
     res.redirect('/staff/login');
 }
 
@@ -116,7 +151,8 @@ exports.dashboard = async(req, res) =>{
     res.render("dashboard", {
     'title': 'dashboard',
     staff: staff,
-    'goals': goal
+    'goals': goal,
+    'alert' : res.locals.message,
 
     
     });
@@ -126,7 +162,7 @@ exports.dashboard = async(req, res) =>{
 exports.addGoal = function(req, res) {
     
     res.render('create', {
-        'heading' : 'Add',
+        'title' : 'Create a Goal',
         staff: req.user.name,
         goal: req.body.goal,
         category: req.body.category,
@@ -153,7 +189,7 @@ exports.createGoal = async (req, res ) => {
     try {
         req.body.staff = req.user.id;
         await Goal.create(req.body);
-        req.flash('message', 'Goal added'); 
+        req.flash('message', 'Your goal has been added'); 
         res.redirect('/dashboard');
     } catch(err) {
         console.log(err);
@@ -167,7 +203,7 @@ exports.editGoal = async (req, res) => {
     try {
         const goal = await Goal.findOne({ _id: req.params.id });
         res.render('edit', {
-            'heading' : 'Edit',
+            'title' : 'Edit your Goal',
             staff: req.user.name,
             goal
         })
@@ -177,6 +213,22 @@ exports.editGoal = async (req, res) => {
     }
 }
 
+
+exports.completeGoal = async(req, res) => {
+    try {
+        let goal = await Goal.findById(req.params.id);
+       let result = await Goal.findOneAndUpdate({ _id: req.params.id }, { completed: !goal.completed}, {
+            new: true,
+            runValidators: true
+    });
+     console.log('goalball', result)
+        res.redirect('/dashboard');
+    } catch(err) {
+        console.log(err);
+        res.render('500');
+    }
+
+}
 
 
 exports.updateGoal = async(req, res) => { 
@@ -195,18 +247,6 @@ exports.updateGoal = async(req, res) => {
     }
 }
 
-exports.mark_complete = async (req, res) => {
-
-    try {
-        
-        await Goal.updateOne({ _id: req.params.id }, {status: 'Complete'});
-        req.flash('message', 'Well done!'); 
-        res.redirect('/dashboard');
-    } catch(err) {
-        console.log(err);
-        res.render('500');
-    }
-}
 
 exports.deleteGoal = async (req, res) => {
     try {

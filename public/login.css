@@ -64,3 +64,12 @@ ul li {
 .form-label, .no-account, .fw-normal {
   color: white;
 }
+
+.alert {
+  text-align: center;
+  font-size: 12px;
+  padding: 10px 0px;
+  color: red;
+  background-color: white;
+  width: 40%;
+}

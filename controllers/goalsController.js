@@ -1,21 +1,21 @@
-const express = require('express');
-const router = express.Router();
+// const express = require('express');
+// const router = express.Router();
 
-const staff = require("../models/staff");
-const Goal = require('../models/goals');
-const { getStaff } = require('./staffController');
+// const staff = require("../models/staff");
+// const Goal = require('../models/goals');
+// const { getStaff } = require('./staffController');
 
 
-// list all goals
-const listGoals = (req, res) => {
-    Goal.find({}, (err, data) => {
-    if(!err) {
-        res.send(data);
-    } else {
-        console.log(err);
-    }
-});
-}
+// // list all goals
+// const listGoals = (req, res) => {
+//     Goal.find({}, (err, data) => {
+//     if(!err) {
+//         res.send(data);
+//     } else {
+//         console.log(err);
+//     }
+// });
+// }
 
 
 // //Create Goal

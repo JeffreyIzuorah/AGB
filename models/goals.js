@@ -15,6 +15,9 @@ const GoalSchema = new mongoose.Schema({
     started: {
         type:Date,
         // required:true
+    },
+    completed: {
+        type:Boolean,
     }
 });
 
