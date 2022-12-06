@@ -17,7 +17,7 @@ rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxj
             <div class="navBar" id="myIcons">
                 <a class="home" href="/dashboard">  <i class="bi bi-house-door" style="color: #fff;"></i></a> 
                 <a href="/create"> <i class="bi bi-plus" style="color: #fff;"></i></a>  
-                <a href="/manageStaff"><i class="bi bi-people"style="color: #fff;"></i></a>
+                <a href="/manageStaff"><i class="bi bi-people" style="color: #fff;"></i></a>
                 <a href="/logout"><i class="bi bi-box-arrow-left" style="color: #fff;"></i></a>
             </div>
         </div>
@@ -37,12 +37,12 @@ rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxj
             {{#goal}}
             {{#completed}}
   
-             <h2><strong>Completed?:</strong><input type="checkbox" checked/></h2>
+             <h2><strong>Completed?:</strong><input type="checkbox" checked></h2>
             
             {{/completed}}
             {{^completed}}
   
-             <h2><strong>Completed?:</strong><input type="checkbox"/></h2>
+             <h2><strong>Completed?:</strong><input type="checkbox"></h2>
             
             {{/completed}}
             
@@ -67,6 +67,7 @@ rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxj
                     <i class="bi bi-trash3"></i>
                 </a>
             </div>
+
  
             </div>
 
@@ -82,12 +83,10 @@ rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxj
                  </div>
             {{/goals}}
         
-        
-        
+
         </div>
         </div>
     </div>
-
 
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

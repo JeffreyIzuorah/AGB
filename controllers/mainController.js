@@ -5,27 +5,25 @@ const Staff = require("../models/staff");
 const passport = require("passport")
 const bcrypt = require('bcrypt')
 
-exports.homePage = function(req, res) {
+const homePage = (req, res) => {
     res.render("index", {
     'title': 'AGB Wellness'
     });
     }
 
-exports.about = function(req, res) {
+const about = (req, res) => {
     res.render("about", {
     });
     }
 
-exports.register = function(req, res) {
+const register = (req, res) =>{
     res.render("register", {
     'title': 'Register'
     });
     }
 
-
-exports.createStaff = function(req, res ) { 
-    bcrypt.hash(req.body.password, 10, function(err, hashedPass) {
-        
+const createStaff = (req, res ) => { 
+    bcrypt.hash(req.body.password, 10, function(err, hashedPass) {       
         if (err) {
             return res.json({
                 error: err
@@ -48,7 +46,7 @@ exports.createStaff = function(req, res ) {
     })
 }
 
-exports.staffPage = async(req, res) =>{
+const staffPage = async(req, res) =>{
     
     const allStaff = await Staff.find().lean();
     if (req.user.isManager ) {
@@ -63,30 +61,33 @@ exports.staffPage = async(req, res) =>{
     }  
 }
 
-exports.addStaffPage = async(req, res) =>{
+ const addStaffPage = async(req, res) =>{
     res.render("addStaff", {
         'title' : 'Manage Staff',
     });
 }
 
-exports.addStaff = async(req, res) =>{
+const addStaff = async(req, res) =>{
+    bcrypt.hash('password', 10, function(err, hashedPass) {
     const staff = new Staff({
         name: req.body.name,
         email: req.body.email,
+        password: hashedPass,
+        isStaff: true
     });
     staff.save((err, data) => {
         if(!err) {
-            // res.send(data);
             res.redirect('/manageStaff')
         } else {
             res.redirect('/addStaff')
            console.log(err);
         }
     });
+})
 }
 
 
-exports.deleteStaff = async (req, res) => {
+const deleteStaff = async (req, res) => {
     try {
         await Staff.deleteOne({ _id: req.params.id });
         req.flash('message', 'Staff has been successfully removed!'); 
@@ -98,7 +99,7 @@ exports.deleteStaff = async (req, res) => {
 }
 
 
-exports.listStaff = function (req, res) {
+const listStaff =  (req, res) => {
     Staff.find({}, (err, data) => {
     if(!err) {
         res.send(data);
@@ -109,7 +110,7 @@ exports.listStaff = function (req, res) {
 }
 
 
-exports.login = function(req, res) {
+const login = (req, res) => {
     res.render("login", {
     'title': 'Sign in',
     'alertSuccess' : res.locals.success_msg,
@@ -119,7 +120,7 @@ exports.login = function(req, res) {
     }
 
 
-exports.post_login = (req, res, next) => {
+const post_login = (req, res, next) => {
 
     passport.authenticate('local',{
         successRedirect : '/dashboard',
@@ -130,7 +131,7 @@ exports.post_login = (req, res, next) => {
 }
 
 
-exports.logout = function(req, res, next) {
+const logout = (req, res, next) => {
     req.logout((err) =>{
         if(err) {
             return next(err);
@@ -139,7 +140,7 @@ exports.logout = function(req, res, next) {
     res.redirect('/staff/login');
 }
 
-exports.dashboard = async(req, res) =>{
+const dashboard = async(req, res) =>{
     const goal = await Goal.find({ staff: req.user.id.toString() }).lean();
     const staff = req.user.name
     res.render("dashboard", {
@@ -151,7 +152,7 @@ exports.dashboard = async(req, res) =>{
      
 }
 
-exports.addGoal = function(req, res) {   
+const addGoal = (req, res) => {   
     res.render('create', {
         'title' : 'Create a Goal',
         staff: req.user.name,
@@ -161,7 +162,7 @@ exports.addGoal = function(req, res) {
     });
 }
 
-exports.createGoal = async (req, res ) => { 
+const createGoal = async (req, res ) => { 
     if(!req.body.goal) {
         res.status(400).send("Goal required");
         return;
@@ -187,7 +188,7 @@ exports.createGoal = async (req, res ) => {
 
 
 
-exports.editGoal = async (req, res) => {
+const editGoal = async (req, res) => {
     try {
         const goal = await Goal.findOne({ _id: req.params.id });
         res.render('edit', {
@@ -200,15 +201,13 @@ exports.editGoal = async (req, res) => {
     }
 }
 
-
-exports.completeGoal = async(req, res) => {
+const completeGoal = async(req, res) => {
     try {
         let goal = await Goal.findById(req.params.id);
        let result = await Goal.findOneAndUpdate({ _id: req.params.id }, { completed: !goal.completed}, {
             new: true,
             runValidators: true
     });
-     console.log('goalball', result)
         res.redirect('/dashboard');
     } catch(err) {
         console.log(err);
@@ -217,7 +216,7 @@ exports.completeGoal = async(req, res) => {
 }
 
 
-exports.updateGoal = async(req, res) => { 
+const updateGoal = async(req, res) => { 
     try {
         let goal = await Goal.findById(req.params.id);
 
@@ -233,7 +232,7 @@ exports.updateGoal = async(req, res) => {
 }
 
 
-exports.deleteGoal = async (req, res) => {
+const deleteGoal = async (req, res) => {
     try {
         await Goal.deleteOne({ _id: req.params.id });
         req.flash('message', 'Goal has been successfully removed!'); 
@@ -245,8 +244,28 @@ exports.deleteGoal = async (req, res) => {
 }
 
 
-    
+module.exports = {
+    homePage,
+    about,
+    register,
+    createStaff,
+    staffPage,
+    addStaffPage,
+    addStaff,
+    deleteStaff,
+    listStaff,
+    login,
+    post_login,
+    logout,
+    dashboard,
+    addGoal,
+    createGoal,
+    editGoal,
+    completeGoal,
+    updateGoal,
+    deleteGoal
 
+}
 
 
 

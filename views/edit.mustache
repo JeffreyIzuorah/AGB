@@ -39,12 +39,10 @@
         <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5" style="margin: 20px;">
             <form method="post" role="form" style="margin-left: 50px;">
             <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">{{title}}</h3>
-                {{#goals}}
                 <div class="form-group">
                     <input type="text" id="goal" name="goal" value="{{goal.goal}}" required>
                 </div>
                
-               {{#category}}
                 <div class="form-group">
                     <select name="category" id="category" value="{{goal.category}}" style="margin: 8px 0;" >
                     <option value={{category}}>Fitness</option>
@@ -53,9 +51,6 @@
                     <option value={{category}}>Health</option>
                     </select>
                 </div>
-                {{/category}}
-
-                
 
                 <div class="form-group">
                     <input type="date" id="started" name="started" value="{{goal.started}}" style="margin: 8px 0;" required>
@@ -67,7 +62,6 @@
                     <input type="submit" value="update">
                     <a class="btn btn-danger btn-lg" role="button" href="/dashboard">Cancel</a>
                 </div>
-                {{/goals}}
             </form>
         </div>
 
