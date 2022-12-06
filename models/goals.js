@@ -6,15 +6,15 @@ const GoalSchema = new mongoose.Schema({
     },
     goal: {
         type:String,
-        // required:true
+        required:true
     }, 
     category: {
         type:String,
-        // required:true
+        required:true
     },
     started: {
         type:Date,
-        // required:true
+        required:true
     },
     completed: {
         type:Boolean,

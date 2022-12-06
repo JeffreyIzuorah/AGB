@@ -1,0 +1,103 @@
+@import url("https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/metropolis.min.css");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./assets/agbhome.jpg') no-repeat;
+    
+    font-family: 'metropolis';
+    background-size: 100%;
+    background-size:cover;
+    overflow: hidden;
+  }
+
+
+
+header a {
+    text-decoration: none;
+  }
+  
+  header {
+    padding: 0 20px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  #brand {
+    display: inline-block;
+  margin: 15px; /* margin: 20px was off */
+  height: 60px;
+  width: auto; /* correct proportions to specified height */
+  border-radius: 50%; /* makes it a circle */
+   
+  }
+  
+  /* #brand a {
+    color: white;
+  } */
+  
+  ul {
+    list-style: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  ul a {
+    color: white;
+  }
+  
+  ul li {
+    padding: 5px;
+    margin-left: 10px;
+  }
+
+
+
+/* header ends here */
+
+h1 {
+    color: white;
+    font-family: 'Metropolis', sans-serif;
+    font-style: bold;
+    text-align: center;
+    font-size: 50px;
+    padding-top: 130px;
+}
+
+
+.messagein {
+    color: white;
+    text-align: center;
+    font-family: 'metropolis';
+    font-size: 22px;
+    font-style: 'regular';
+    letter-spacing: -0.4%;
+    line-height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 18em
+}
+
+.linkscontainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:200px;
+}
+
+
+.links {
+    padding: 5px;
+    color: white;
+    font-family: 'Metropolis';
+    text-align: center;;
+}
+
+

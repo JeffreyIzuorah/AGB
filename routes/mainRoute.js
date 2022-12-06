@@ -13,7 +13,7 @@ router.post("/create", checkAuthenticated, controller.createGoal);
 router.get('/edit/:id', checkAuthenticated, controller.editGoal)
 router.post('/edit/:id', checkAuthenticated, controller.updateGoal)
 router.get("/delete/:id", checkAuthenticated, controller.deleteGoal)
-router.get("/completeGoal/:id", controller.completeGoal)
+router.get("/completeGoal/:id", checkAuthenticated, controller.completeGoal)
 router.get("/deleteStaff/:id", checkAuthenticated, controller.deleteStaff)
 router.get("/manageStaff",  controller.staffPage);
 router.get("/addStaff",  controller.addStaffPage);

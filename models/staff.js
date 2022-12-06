@@ -11,7 +11,7 @@ const StaffSchema  = new mongoose.Schema({
     },
     password: {
         type:String,
-        // required:true
+        required:true
     },
     isManager: {
         type:Boolean,

@@ -3,17 +3,14 @@ const bcrypt = require('bcrypt')
 const Staff = require('../models/staff')
 
 
-
 module.exports = function(passport) {
     passport.use(
         new LocalStrategy({usernameField : 'email'},(email,password,done)=> {
-                //match user
                 Staff.findOne({email : email})
                 .then((staff)=>{
                  if(!staff) {
                      return done(null,false,{message : 'Email not registered'});
                  }
-                 //match pass
                  bcrypt.compare(password,staff.password,(err,isMatch)=>{
                      if(err) throw err;
 
@@ -25,8 +22,7 @@ module.exports = function(passport) {
                  })
                 })
                 .catch((err)=> {console.log(err)})
-        })
-        
+        })   
     )
     passport.serializeUser(function(staff, done) {
         done(null, staff.id);

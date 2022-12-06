@@ -12,9 +12,8 @@ require('./config/passport')(passport)
 
 const dotenv = require("dotenv");
 
-
 const connectDB = require('./config/db');
-// const { post_login, post_login_middleware } = require("./controllers/mainController");
+
 // Load Config
 dotenv.config({path: './config/config.env'})
 
@@ -44,19 +43,7 @@ app.use((req, res, next) => {
 })
 
 
-
-
-
-
-
-// app.use('/goals', require('./routes/goals'));
-
-// app.get('/dashboard', post_login_middleware)
-
-
-
 app.use(express.static(__dirname + '/public'));
-
 
 
 app.listen(8000, () => {
